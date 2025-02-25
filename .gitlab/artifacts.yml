@@ -3,6 +3,10 @@
 .cmake_build_artifacts:
     artifacts:
         expire_in: 1d
+        when: always
+        reports:
+            annotations:
+                - build/annotations.json
         paths:
             # The artifacts of the build.
             - build/install/
@@ -30,10 +34,14 @@
 
             # CDash files.
             - build/DartConfiguration.tcl
+            - build/cdash-build-id
 
 .cmake_test_artifacts:
     artifacts:
         expire_in: 1d
+        when: always
         reports:
+            annotations:
+                - build/annotations.json
             junit:
                 - build/junit.xml
